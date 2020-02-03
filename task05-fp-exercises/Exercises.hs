@@ -273,5 +273,4 @@ grepSubstringNoFilename needle = grep' (\_ s -> s) (isSubstringOf needle)
 -- >>> grepExactMatchWithFilename "c" [("a.txt", ["a", "a"]), ("b.txt", ["b", "bab", "c"]), ("c.txt", ["c", "ccccc"])]
 -- ["b.txt:c", "c.txt:c"]
 grepExactMatchWithFilename :: String -> [File] -> [String]
-grepExactMatchWithFilename needle = grep' (\name -> map' (\s -> name ++ ":" ++ s))  (== needle)
-                                    --where format name = map' (\s -> name ++ ":" ++ s)
+grepExactMatchWithFilename needle = grep' (\name -> map' ((name ++ ":") ++))  (== needle)
